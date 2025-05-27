@@ -8,6 +8,30 @@ import { motion } from "motion-v"
         :animate="{ rotate: 360 }"
         :transition="{ duration: 1 }"
     />
+
+
+    
+
+  <motion.div class="test" :whileHover="{ scale: 1.1, rotate: 3 }" :transition="{ duration: 0.3 }">
+    this is test div
+  </motion.div>
+
+
+  <motion.div
+  :whileHover="{ scale: 1.1, rotate: 3 }"
+  :transition="{ duration: 0.3 }"
+>
+  Hover me!
+</motion.div>
+
+
+
+<motion.button
+  :whileTap="{ scale: 0.4 }"
+>
+  Tap Me
+</motion.button>
+
 </template>
 
 <style>
