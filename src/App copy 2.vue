@@ -2,39 +2,34 @@
 import { ref } from 'vue'
 import { motion } from 'motion-v'
 
-const guessState = ref('none') // 'none', 'wrong', 'right'
+const isGuessed = ref(false)
 
 const guessing = () => {
-  guessState.value = 'wrong'
+  isGuessed.value = true
   setTimeout(() => {
-    guessState.value = 'none'
-  }, 1000)
+    isGuessed.value = false
+  }, 1000) // back to normal after 0.5s
 }
 
+
 const guessing2 = () => {
-  guessState.value = 'right'
-  setTimeout(() => {
-    guessState.value = 'none'
-  }, 1000)
+  
 }
 </script>
 
-
 <template>
   <motion.div class="test" :animate="{
-    boxShadow: guessState === 'wrong'
+    boxShadow: isGuessed
       ? '3px 3px 19px -3px red'
-      : guessState === 'right'
-        ? '3px 3px 19px -3px green'
-        : 'rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px'
+      : 'rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px'
   }" :transition="{ duration: 0.3 }">
     this is test div
   </motion.div>
 
   <button @click="guessing">guessing</button>
+  
   <button @click="guessing2">guessing right</button>
 </template>
-
 
 <style>
 .test {
